@@ -1,0 +1,52 @@
+ProyectoSimulacionColas:
+
+Listo** 1. Crear dos ArrayList que me genere los clientes para caja rápida y para cajas normales (Aleatoriamente) 
+Listo** SE DECLARAN COMO VARIABLES DE CLASE PARA QUE SE PUEDAN UTILIZAR EN TODAS LOS RECORRIDOS.
+2. Crear las Jlabel independientes que al momento de que se generé el paso 1 se pongan en su respectivo lugar
+		Ejemplo:
+		Cajas rápida:   0 / 18
+		Cajas normales: 0 / 57
+3. Crear variable aleatoria de el tiempo de atención para cajas rapidas y cajas normales.
+		Ejemplo:	
+		Caja rápida: x = 80 seg, x = 45 seg, x = 60 seg, x = 30 seg.
+		Cajas normales: x = 180seg, x = 185seg, x = 230 seg, x = 210 seg.
+4. Incluir en el método de recorrido esa variable aleatoria del punto 3, para poner un if que no se liberé el monitor hasta que se acabe estos segundos
+		Ejemplo:
+			if( segundos < variableAletoria){
+				Recorrer segundos...
+			}else{
+				Liberar Monitor
+				Aumentar el label de cliente atendido ->  Caja rápida: 1 / 18
+			}
+5. Crear una variable aleatoria el cual me describa el tiempo de espera entre cliente.
+		Ejemplo: 
+		Llega un cliente y se termina de atender
+		Variable aleatoria -> 0 seg ó 180 seg ó 5min, etc (depende del horario ya que puede ser recurrente)
+		Cuando se cumpla que llegué el otro cliente...
+6. Hacer que el método reciba por parametro el ArrayList de su recorrido correspondiente.
+		Puede ser: 
+			conteoRapida -> Se declara como variable de clase para poder manipularlo desde recorridoCaja1 y recorridoCaja2
+			public void recorridoCaja1(ArrayList<JLabel> clientesRapida){
+				clientesRapida[conteoRapida].setBounds(x, y,40,40); ó clientesRapida.get(conteoRapida).setBounds(x, y,40,40);
+
+        			if(segundos < 3){
+            				cliente1.setBounds(x, y,40,40);
+            				System.out.println("x -> "+x+"y -> "+y+" segundos -> "+segundos);
+            				y = y-25;
+        			}else if(segundos < 10){
+            				cliente1.setBounds(x, y, 40, 40);
+            				System.out.println("x -> "+x+"y -> "+y+" segundos -> "+segundos);
+            				x = x-50;
+        			}else if(segundos < 16){
+            				cliente1.setBounds(x, y, 40, 40);
+            				System.out.println("x -> "+x+"y -> "+y+" segundos -> "+segundos);
+            				y = y-55;
+        			}else if(!segundos < variableAletoria){
+					Liberar Monitor
+					Aumentar el label de cliente atendido ->  Caja rápida: 1 / 18
+					conteoRapida++; <- Para que pueda proseguir con el siguiente cliente.		
+				}
+       				this.repaint();
+        			this.revalidate();
+			}
+7. Hacer los demás metodos de recorridos.
